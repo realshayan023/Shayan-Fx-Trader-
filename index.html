@@ -1,1 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shayan FX Trader | Forex & Gold Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0B0F19;
             --card-bg: rgba(22, 28, 45, 0.7);
+            --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7);
+            --gold-primary: #D4AF37;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-green: #10B981;
+            --accent-red: #EF4444;
+            --border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 1. Live Marquee Ticker Animation */
+        .ticker-wrap {
+            width: 100%;
+            background: rgba(16, 185, 129, 0.08);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            overflow: hidden;
+            padding: 8px 0;
+            white-space: nowrap;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .up { color: var(--accent-green); }
+        .down { color: var(--accent-red); }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Continuous Animations */
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+        }
+
+        /* Scroll Reveal Base Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky Glass Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(12px);
+            background: rgba(11, 15, 25, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .gradient-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* WhatsApp Button with Pulse Animation */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            animation: pulseGlow 3s infinite;
+            transition: all 0.4s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Image & Frame Styling */
+        .hero-img-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 2. Animated Trading Candlesticks Graphic Background */
+        .chart-bg {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .candle {
+            width: 12px;
+            background: var(--accent-green);
+            border-radius: 2px;
+            animation: candleMove 3s infinite ease-in-out alternate;
+        }
+
+        .candle.red { background: var(--accent-red); }
+
+        .candle:nth-child(1) { height: 40%; animation-delay: 0.2s; }
+        .candle:nth-child(2) { height: 70%; animation-delay: 0.5s; }
+        .candle:nth-child(3) { height: 30%; animation-delay: 0.1s; }
+        .candle:nth-child(4) { height: 85%; animation-delay: 0.7s; }
+        .candle:nth-child(5) { height: 50%; animation-delay: 0.3s; }
+
+        @keyframes candleMove {
+            0% { transform: scaleY(0.8); }
+            100% { transform: scaleY(1.2); }
+        }
+
+        .hero-img-card {
+            width: 100%;
+            max-width: 360px;
+            height: 460px;
+            border-radius: 24px;
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-img-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Floating Badges */
+        .floating-badge {
+            position: absolute;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            z-index: 10;
+        }
+
+        .badge-1 { 
+            top: 20px; 
+            left: -20px; 
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        .badge-2 { 
+            bottom: 20px; 
+            right: -20px; 
+            animation: floatAnimation 3.5s ease-in-out infinite 0.5s;
+        }
+
+        .floating-badge i {
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Stats Grid */
+        .stats-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 35px 25px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold-primary);
