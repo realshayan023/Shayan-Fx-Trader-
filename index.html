@@ -350,3 +350,183 @@
 
         .service-card:hover {
             border-color: var(--gold-primary);
+            background: rgba(22, 28, 45, 0.9);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card i {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 80px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 868px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1 { font-size: 2.4rem; }
+            .badge-1, .badge-2 { position: static; margin: 10px auto; width: fit-content; animation: none; }
+            .hero-img-container { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker-move">
+            <div class="ticker-item"><i class="fa-solid fa-chart-line"></i> XAU/USD: <span class="up">$2,415.50 ▲ +1.25%</span></div>
+            <div class="ticker-item">EUR/USD: <span class="down">1.0882 ▼ -0.15%</span></div>
+            <div class="ticker-item">GBP/USD: <span class="up">1.2910 ▲ +0.32%</span></div>
+            <div class="ticker-item">BTC/USD: <span class="up">$67,420 ▲ +2.80%</span></div>
+            <div class="ticker-item"><i class="fa-solid fa-gem"></i> Gold Market Specialization &bull; Shayan FX Trader</div>
+            <div class="ticker-item"><i class="fa-solid fa-chart-line"></i> XAU/USD: <span class="up">$2,415.50 ▲ +1.25%</span></div>
+            <div class="ticker-item">EUR/USD: <span class="down">1.0882 ▼ -0.15%</span></div>
+            <div class="ticker-item">GBP/USD: <span class="up">1.2910 ▲ +0.32%</span></div>
+            <div class="ticker-item">BTC/USD: <span class="up">$67,420 ▲ +2.80%</span></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">Shayan FX Trader</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero reveal" id="home">
+        <div class="hero-text">
+            <h1>Trade With Confidence & <span class="gradient-text">Master Gold</span></h1>
+            <p>Shayan FX Trader | XAUUSD Specialist | Forex Mentor<br>Learn smart trading with disciplined risk management & consistent market growth.</p>
+            <a href="https://wa.me/923008617023" class="btn-whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp Now
+            </a>
+        </div>
+
+        <div class="hero-img-container">
+            <div class="chart-bg">
+                <div class="candle"></div>
+                <div class="candle red"></div>
+                <div class="candle"></div>
+                <div class="candle"></div>
+                <div class="candle red"></div>
+            </div>
+
+            <div class="hero-img-card">
+                <img src="IMG-20260726-WA0029.jpg" alt="Shayan FX Trader Profile Photo">
+            </div>
+
+            <div class="floating-badge badge-1">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                    <strong style="display:block; font-size: 0.9rem;">5+ Years</strong>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Experience</span>
+                </div>
+            </div>
+
+            <div class="floating-badge badge-2">
+                <i class="fa-solid fa-chart-line"></i>
+                <div>
+                    <strong style="display:block; font-size: 0.9rem;">XAUUSD</strong>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Gold Specialist</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section reveal" id="about">
+        <div class="stat-card">
+            <h3>XAUUSD</h3>
+            <p>Main Market Specialization</p>
+        </div>
+        <div class="stat-card">
+            <h3>5+ Years</h3>
+            <p>Trading & Mentorship Experience</p>
+        </div>
+        <div class="stat-card">
+            <h3>24/7</h3>
+            <p>Market Analysis & Support</p>
+        </div>
+    </section>
+
+    <section class="services reveal" id="services">
+        <h2 class="section-title">Our <span class="gradient-text">Expertise</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h3>Market Analysis</h3>
+                <p>Daily breakdown of Forex trends and detailed technical entry points.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-coins"></i>
+                <h3>Gold Trading Signals</h3>
+                <p>High-probability XAUUSD signals with proper stop-loss & target levels.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Trading Education</h3>
+                <p>Learn price action, market structure, and professional strategies.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Risk Management</h3>
+                <p>Protect your equity with smart lot size management and capital protection.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="reveal">
+        <p style="margin-bottom: 10px;"><strong>Contact Direct:</strong> WhatsApp: 03008617023 | Telegram: @shayan_niazi</p>
+        <p>&copy; 2026 Shayan FX Trader. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
