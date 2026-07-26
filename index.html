@@ -35,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. Live Marquee Ticker Animation */
+        /* Live Marquee Ticker Animation */
         .ticker-wrap {
             width: 100%;
             background: rgba(16, 185, 129, 0.08);
@@ -164,8 +164,8 @@
             margin-bottom: 30px;
         }
 
-        /* WhatsApp Button with Pulse Animation */
-        .btn-whatsapp {
+        /* Filter Trigger Button */
+        .btn-filter-modal {
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -175,11 +175,14 @@
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
             animation: pulseGlow 3s infinite;
             transition: all 0.4s ease;
         }
 
-        .btn-whatsapp:hover {
+        .btn-filter-modal:hover {
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
         }
@@ -191,7 +194,7 @@
             justify-content: center;
         }
 
-        /* 2. Animated Trading Candlesticks Graphic Background */
+        /* Animated Trading Candlesticks Graphic Background */
         .chart-bg {
             position: absolute;
             width: 110%;
@@ -385,6 +388,121 @@
             margin-top: 80px;
         }
 
+        /* Filtering Modal Popup Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-card {
+            background: #111827;
+            border: 1px solid var(--gold-primary);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--gold-primary);
+        }
+
+        .modal-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--gold-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group select option {
+            background: #111827;
+            color: var(--text-main);
+        }
+
+        .btn-submit-form {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-submit-form:hover {
+            opacity: 0.9;
+        }
+
+        #filterMessage {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 868px) {
             .hero {
@@ -429,9 +547,9 @@
         <div class="hero-text">
             <h1>Trade With Confidence & <span class="gradient-text">Master Gold</span></h1>
             <p>Shayan FX Trader | XAUUSD Specialist | Forex Mentor<br>Learn smart trading with disciplined risk management & consistent market growth.</p>
-            <a href="https://wa.me/923008617023" class="btn-whatsapp" target="_blank">
-                <i class="fa-brands fa-whatsapp fa-xl"></i> WhatsApp Now
-            </a>
+            <button class="btn-filter-modal" onclick="openModal()">
+                <i class="fa-solid fa-user-check"></i> Apply for Mentorship / Signals
+            </button>
         </div>
 
         <div class="hero-img-container">
@@ -506,27 +624,20 @@
         </div>
     </section>
 
-    <footer id="contact" class="reveal">
-        <p style="margin-bottom: 10px;"><strong>Contact Direct:</strong> WhatsApp: 03008617023 | Telegram: @shayan_niazi</p>
-        <p>&copy; 2026 Shayan FX Trader. All Rights Reserved.</p>
-    </footer>
+    <!-- Screening / Verification Pop-up Modal -->
+    <div class="modal-overlay" id="filterModal">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3>Access Screening Form</h3>
+            <p>Please answer the questions below to connect with Shayan FX Trader.</p>
 
-    <script>
-        function revealOnScroll() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+            <form id="screeningForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="userName">Full Name *</label>
+                    <input type="text" id="userName" placeholder="Enter your name" required>
+                </div>
 
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-    </script>
-</body>
-</html>
+                <div class="form-group">
+                    <label for="tradingExp">Trading Experience *</label>
+                    <select id="tradingExp" required>
+                        <option
