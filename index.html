@@ -167,7 +167,7 @@ We provide Forex Trading Education, Market Analysis, Trading Strategies and Prof
 
 <div class="logo">
 
-<img src="IMG-20260726-WA0029.jpg" alt="Logo">
+<img src="" alt="Logo">
 
 <h2>Shayan FX Trader</h2>
 
@@ -317,3 +317,77 @@ Premium Forex Courses Will Be Available Soon.
 
 </body>
 </html>
+*{
+navadding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0b0b0b;
+color:#fff;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#111;
+border-bottom:2px solid #D4AF37;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+border:2px solid #D4AF37;
+}
+
+.logo h2{
+color:#D4AF37;
+}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:25px;
+transition:.3s;
+font-weight:600;
+}
+
+nav a
+  // Smooth fade animation
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+}
+});
+});
+
+sections.forEach(section=>{
+section.style.opacity="0";
+section.style.transform="translateY(60px)";
+section.style.transition="all 0.8s ease";
+observer.observe(section);
+});
+
+// Navbar shadow on scroll
+window.addEventListener("scroll",()=>{
+const header=document.querySelector("header");
+if(window.scrollY>20){
+header.style.boxShadow="0 5
